@@ -5,7 +5,7 @@ local outputs modes expl
 
 _xrandr_outputs() {
     local vals
-    vals=( ${(f)"$(xrandr | grep 'connected' | cut -d' ' -f1)"} )
+    vals=( ${(f)"$(xrandr | awk '/connected/ { print $1 }')"} )
     _describe -t outputs 'outputs' vals && return 0
 }
 
